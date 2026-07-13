@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aibel Shibin — Student-athlete &amp; aspiring author</title>
+<meta name="description" content="Aibel Shibin — 10th-grade student in Qatar, aspiring author, student-athlete, and coder. Learning. Building. Creating.">
+<script>document.documentElement.className += ' js';</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..600&amp;family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&amp;display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F5F1EA;
+    --ink:#111111;
+    --ink-soft:#3a3a3a;
+    --muted:#6b6b6b;
+    --line:#dcd6cb;
+    --card:#efeae1;
+    --maxw:920px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:"Newsreader", Georgia, "Times New Roman", serif;
+    font-size:19px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+
+  /* ---- scroll progress ---- */
+  #progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--ink);z-index:60;transition:width .12s linear;}
+
+  /* ---- paper grain ---- */
+  #grain{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.04;mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+
+  /* ---- organic corner blobs ---- */
+  .blob{position:fixed;z-index:0;pointer-events:none;opacity:0.06;fill:var(--ink);}
+  .blob.tl{top:-140px;left:-160px;width:420px;height:420px;animation:floatA 17s ease-in-out infinite;}
+  .blob.br{bottom:-160px;right:-170px;width:460px;height:460px;animation:floatB 21s ease-in-out infinite;}
+  @keyframes floatA{0%,100%{transform:translate(0,0) rotate(0deg);}50%{transform:translate(16px,-20px) rotate(6deg);}}
+  @keyframes floatB{0%,100%{transform:translate(0,0) rotate(0deg);}50%{transform:translate(-18px,14px) rotate(-6deg);}}
+
+  .wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;padding:0 26px;}
+
+  /* ---- hero ---- */
+  header.hero{padding:82px 0 44px;text-align:center;}
+  .avatar{
+    position:relative;width:112px;height:112px;border-radius:50%;
+    background:var(--ink);color:var(--paper);
+    display:flex;align-items:center;justify-content:center;margin:0 auto 30px;
+    font-family:"Fraunces", Georgia, serif;font-weight:600;font-size:60px;line-height:1;
+    box-shadow:0 8px 30px rgba(0,0,0,.18);user-select:none;
+    transition:transform .5s cubic-bezier(.2,.8,.2,1), box-shadow .5s;
+  }
+  .avatar::before{content:"";position:absolute;inset:-11px;border-radius:50%;border:1.5px dashed rgba(17,17,17,.28);animation:spin 24s linear infinite;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+  .avatar:hover{transform:translateY(-4px) rotate(-4deg);box-shadow:0 14px 40px rgba(0,0,0,.24);}
+  .avatar span{transform:translateY(-2px);}
+  h1{font-family:"Fraunces", Georgia, serif;font-weight:600;font-size:clamp(40px,7.4vw,68px);letter-spacing:-0.015em;margin:0 0 14px;line-height:1.0;}
+  .headline{font-size:clamp(17px,2.4vw,21px);color:var(--ink-soft);font-style:italic;margin:0 auto 24px;max-width:620px;}
+  .pill{display:inline-block;border:1.5px solid var(--ink);border-radius:999px;padding:9px 24px;font-family:"Fraunces", Georgia, serif;font-weight:500;font-size:15px;letter-spacing:0.16em;text-transform:uppercase;}
+  .scroll-hint{display:block;margin:38px auto 0;width:26px;height:26px;color:var(--muted);font-size:24px;line-height:26px;animation:bob 1.9s ease-in-out infinite;transition:opacity .4s;}
+  @keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(7px);}}
+  body.scrolled .scroll-hint{opacity:0;}
+
+  /* ---- nav ---- */
+  nav{position:sticky;top:0;z-index:5;background:rgba(245,241,234,0.82);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);margin-top:32px;}
+  nav .wrap{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 26px;padding-top:14px;padding-bottom:14px;}
+  nav a{color:var(--muted);text-decoration:none;font-size:15px;letter-spacing:0.06em;text-transform:uppercase;font-family:"Fraunces", Georgia, serif;font-weight:500;padding:2px 0;border-bottom:1.5px solid transparent;transition:border-color .25s,color .25s;}
+  nav a:hover{color:var(--ink);border-bottom-color:var(--ink);}
+  nav a.active{color:var(--ink);border-bottom-color:var(--ink);}
+
+  /* ---- sections ---- */
+  section{padding:60px 0;border-bottom:1px solid var(--line);}
+  section:last-of-type{border-bottom:none;}
+  .eyebrow{font-family:"Fraunces", Georgia, serif;font-size:14px;letter-spacing:0.22em;text-transform:uppercase;color:var(--muted);margin:0 0 12px;display:flex;align-items:center;}
+  .eyebrow .num{color:var(--ink);margin-right:12px;padding-right:12px;border-right:1px solid var(--line);font-variant-numeric:tabular-nums;}
+  h2{font-family:"Fraunces", Georgia, serif;font-weight:600;font-size:clamp(28px,4.6vw,42px);margin:0 0 24px;letter-spacing:-0.015em;line-height:1.08;}
+  p{margin:0 0 18px;}
+  p.lead{font-size:21px;color:var(--ink-soft);}
+
+  /* cards / lists */
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:6px;}
+  .card{position:relative;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s;}
+  .card:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,0,0,.08);}
+  .card h3{font-family:"Fraunces", Georgia, serif;font-weight:600;font-size:22px;margin:0 0 8px;}
+  .card p{font-size:17px;color:var(--ink-soft);margin:0;}
+  .card .tag{display:inline-block;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);font-family:"Fraunces",serif;margin-bottom:12px;}
+
+  ul.clean{list-style:none;padding:0;margin:0;}
+  ul.clean li{position:relative;padding:16px 0;border-top:1px solid var(--line);display:flex;gap:16px;align-items:baseline;}
+  ul.clean li:first-child{border-top:none;}
+  ul.clean .mark{font-family:"Fraunces",serif;font-weight:600;font-size:18px;min-width:22px;}
+  ul.clean .body strong{font-weight:600;}
+  ul.clean .body span{display:block;color:var(--muted);font-size:16px;}
+
+  .status{display:inline-block;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;border:1px solid var(--line);border-radius:999px;padding:3px 12px;color:var(--muted);font-family:"Fraunces",serif;margin-left:auto;white-space:nowrap;}
+  .status.done{color:var(--paper);background:var(--ink);border-color:var(--ink);}
+
+  /* ---- contact ---- */
+  .contact-grid{display:flex;flex-direction:column;border-top:1px solid var(--line);margin-top:14px;max-width:580px;}
+  .contact-row{display:flex;align-items:center;gap:16px;padding:20px 4px;border-bottom:1px solid var(--line);text-decoration:none;color:var(--ink);transition:padding-left .28s cubic-bezier(.2,.8,.2,1),background .25s;}
+  .contact-row:hover{padding-left:16px;background:linear-gradient(90deg,rgba(17,17,17,.03),transparent);}
+  .c-label{font-family:"Fraunces",serif;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);min-width:76px;}
+  .c-val{font-size:19px;flex:1;word-break:break-word;}
+  .c-arrow{color:var(--muted);font-size:19px;transition:transform .28s,color .28s;}
+  .contact-row:hover .c-arrow{transform:translate(4px,-4px);color:var(--ink);}
+
+  footer{text-align:center;padding:48px 0 70px;color:var(--muted);font-size:15px;}
+  footer .motto{font-family:"Fraunces",serif;letter-spacing:0.14em;text-transform:uppercase;font-size:13px;color:var(--ink-soft);}
+
+  /* ---- reveal on scroll ---- */
+  .js .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.2,.8,.2,1),transform .7s cubic-bezier(.2,.8,.2,1);}
+  .js .reveal.is-visible{opacity:1;transform:none;}
+
+  /* ============ EDIT MODE UI ============ */
+  #lockBtn{position:fixed;right:16px;bottom:16px;z-index:40;width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--muted);font-size:16px;cursor:pointer;opacity:.5;transition:opacity .2s,transform .2s;display:flex;align-items:center;justify-content:center;}
+  #lockBtn:hover{opacity:1;transform:scale(1.08);}
+
+  .edit-ui{display:none;}
+  body.editing .edit-ui{display:flex;}
+
+  .item-del{position:absolute;top:8px;right:0;width:26px;height:26px;border-radius:50%;border:1px solid var(--ink);background:var(--paper);color:var(--ink);font-size:16px;line-height:1;cursor:pointer;align-items:center;justify-content:center;padding:0;z-index:3;}
+  .card .item-del{top:10px;right:10px;}
+  .item-del:hover{background:var(--ink);color:var(--paper);}
+
+  .add-btn{margin-top:16px;font-family:"Fraunces",serif;font-size:15px;letter-spacing:.04em;color:var(--ink-soft);background:transparent;border:1.5px dashed var(--muted);border-radius:12px;padding:12px 18px;cursor:pointer;transition:background .2s,border-color .2s;align-items:center;justify-content:center;width:100%;}
+  .add-btn:hover{background:var(--card);border-color:var(--ink);color:var(--ink);}
+
+  body.editing ul.clean li{padding-right:40px;}
+  body.editing .status{margin-right:6px;}
+  body.editing .editable{cursor:text;border-radius:4px;transition:box-shadow .15s;}
+  body.editing .editable:hover{box-shadow:0 0 0 2px var(--line);}
+  body.editing .editable:focus{outline:none;box-shadow:0 0 0 2px var(--ink);}
+  body.editing .status{cursor:pointer;}
+  body.editing .status:hover{box-shadow:0 0 0 2px var(--ink);}
+  body.editing .contact-row{pointer-events:auto;}
+  body.editing .c-arrow{display:none;}
+
+  #editBar{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);z-index:41;background:var(--ink);color:var(--paper);border-radius:999px;padding:10px 12px 10px 22px;gap:14px;align-items:center;box-shadow:0 10px 34px rgba(0,0,0,.28);font-family:"Fraunces",serif;font-size:15px;}
+  #editBar .flag{letter-spacing:.1em;text-transform:uppercase;font-size:12px;opacity:.75;}
+  #editBar button{font-family:"Fraunces",serif;font-size:14px;border-radius:999px;border:1px solid var(--paper);background:transparent;color:var(--paper);padding:8px 16px;cursor:pointer;transition:background .2s,color .2s;}
+  #editBar button:hover{background:var(--paper);color:var(--ink);}
+  #editBar #btnDownload{background:var(--paper);color:var(--ink);font-weight:600;}
+  #editBar #btnDownload:hover{opacity:.85;}
+
+  #lockModal{position:fixed;inset:0;z-index:50;background:rgba(20,18,15,.5);backdrop-filter:blur(3px);align-items:center;justify-content:center;display:none;}
+  #lockModal:not([hidden]){display:flex;}
+  .modal-card{background:var(--paper);border-radius:18px;padding:30px 28px;width:min(360px,90vw);box-shadow:0 20px 60px rgba(0,0,0,.3);text-align:center;}
+  .modal-card h3{font-family:"Fraunces",serif;font-size:24px;margin:0 0 6px;}
+  .modal-card p{font-size:16px;color:var(--muted);margin:0 0 18px;}
+  #pwInput{width:100%;padding:12px 14px;font-size:17px;font-family:inherit;border:1.5px solid var(--line);border-radius:10px;background:#fff;margin-bottom:16px;}
+  #pwInput:focus{outline:none;border-color:var(--ink);}
+  .modal-actions{display:flex;gap:10px;justify-content:center;}
+  .modal-actions button{font-family:"Fraunces",serif;font-size:15px;padding:11px 22px;border-radius:999px;cursor:pointer;border:1.5px solid var(--ink);}
+  #pwOk{background:var(--ink);color:var(--paper);}
+  #pwCancel{background:transparent;color:var(--ink);}
+  .pw-err{color:#a11;font-size:14px;margin:12px 0 0;}
+
+  @media (max-width:560px){
+    body{font-size:18px;}
+    header.hero{padding:60px 0 34px;}
+    section{padding:46px 0;}
+    #editBar{flex-wrap:wrap;justify-content:center;left:12px;right:12px;transform:none;border-radius:18px;padding:12px 14px;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .js .reveal{opacity:1;transform:none;transition:none;}
+    .blob,.avatar::before,.scroll-hint{animation:none;}
+    .avatar,.card,.btn,.contact-row{transition:none;}
+    html{scroll-behavior:auto;}
+  }
+</style>
+</head>
+<body class="">
+
+  <div id="progress"></div>
+  <div id="grain"></div>
+
+  <!-- organic corner blobs -->
+  <svg class="blob tl" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><path d="M46.6,-59.2C58.9,-49.2,66.3,-33.4,69.8,-16.7C73.3,0,72.9,17.6,65.2,31.3C57.5,45,42.5,54.8,26.3,61.4C10.1,68,-7.3,71.4,-23.9,67.2C-40.5,63,-56.3,51.2,-64.7,35.6C-73.1,20,-74.1,0.6,-69.4,-16.7C-64.7,-34,-54.3,-49.2,-40.7,-58.9C-27.1,-68.6,-10.3,-72.8,4.6,-78.4C19.5,-84,39,-69.2,46.6,-59.2Z" transform="translate(100 100)"></path></svg>
+  <svg class="blob br" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><path d="M39.5,-52.9C50.3,-44.3,57.6,-31.8,62.2,-17.6C66.8,-3.4,68.7,12.5,63.4,26C58.1,39.5,45.6,50.6,31.4,57.7C17.2,64.8,1.3,67.9,-15.4,66.1C-32.1,64.3,-49.6,57.6,-59.6,44.9C-69.6,32.2,-72.1,13.5,-70.1,-4.4C-68.1,-22.3,-61.6,-39.4,-49.4,-48.3C-37.2,-57.2,-19.3,-57.9,-2,-55.2C15.3,-52.5,28.7,-61.5,39.5,-52.9Z" transform="translate(100 100)"></path></svg>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="wrap">
+      <div class="avatar reveal" aria-hidden="true"><span>A</span></div>
+      <h1 class="reveal">Aibel Shibin</h1>
+      <p class="headline reveal">Student-athlete &amp; aspiring author</p>
+      <span class="pill reveal">Learning. Building. Creating.</span>
+      <a class="scroll-hint" href="#about" aria-label="Scroll down">↓</a>
+    </div>
+  </header>
+
+  <!-- NAV -->
+  <nav>
+    <div class="wrap">
+      <a href="#about" class="">About</a>
+      <a href="#sports" class="">Sports</a>
+      <a href="#certs" class="">Certifications</a>
+      <a href="#projects" class="">Projects</a>
+      <a href="#contact" class="">Contact</a>
+    </div>
+  </nav>
+
+  <main class="wrap">
+
+    <!-- ABOUT -->
+    <section id="about">
+      <p class="eyebrow reveal"><span class="num">01</span> About</p>
+      <h2 class="reveal">Hello, I’m Aibel.</h2>
+      <p class="lead reveal editable">I’m a 10th-grade student in Qatar who is an aspiring author and athlete.</p>
+      <p class="reveal editable">Off the page, I’m a student-athlete — I train with the Young Blasters Sporthood Academy, Kerala Blasters FC’s grassroots pathway here in Qatar, and compete in the JPL Development League. I’ve represented my school in both football and basketball, including at the CBSE Cluster level. Unfortunately I haven't found much luck in winning any awards with my school team or JPL team.&nbsp;</p>
+      <p class="reveal editable">I also code on the side — tinkering with Linux and building small projects to learn how things work. Right now I’m especially focused on improving my speaking skills, and on getting a little better every day.</p>
+    </section>
+
+    <!-- SPORTS -->
+    <section id="sports">
+      <p class="eyebrow reveal"><span class="num">02</span> On the field &amp; court</p>
+      <h2 class="reveal">Sports</h2>
+      <ul class="clean reveal" data-list="sports" data-renumber="">
+        <li>
+          <span class="mark">01</span>
+          <span class="body"><strong class="editable">Young Blasters Sporthood Academy (YBSA)</strong>
+          <span class="editable">Kerala Blasters FC’s grassroots football pathway in Qatar — ongoing training.</span></span>
+        </li>
+        <li>
+          <span class="mark">02</span>
+          <span class="body"><strong class="editable">JPL Development League</strong>
+          <span class="editable">Competitive football fixtures through the development league.</span></span>
+        </li>
+        <li>
+          <span class="mark">03</span>
+          <span class="body"><strong class="editable">School football &amp; basketball</strong>
+          <span class="editable">Represented my school in both sports.</span></span>
+        </li>
+        <li>
+          <span class="mark">04</span>
+          <span class="body"><strong class="editable">CBSE Cluster level</strong>
+          <span class="editable">Competed at the CBSE Cluster stage.</span></span>
+        </li>
+      </ul>
+      <button class="add-btn edit-ui" type="button" data-add="sports">+ Add sports entry</button>
+    </section>
+
+    <!-- CERTIFICATIONS -->
+    <section id="certs">
+      <p class="eyebrow reveal"><span class="num">03</span> Learning</p>
+      <h2 class="reveal">Certifications</h2>
+      <ul class="clean reveal" data-list="certs">
+        <li>
+          <span class="mark">✓</span>
+          <span class="body"><strong class="editable">Cisco — Python Essentials 1</strong>
+          <span class="editable">Fundamentals of Python programming.</span></span>
+          <span class="status done">Completed</span>
+        </li>
+        <li>
+          <span class="mark">✓</span>
+          <span class="body"><strong class="editable">Cisco — Python Essentials 2</strong>
+          <span class="editable">Modules, OOP, and more advanced Python.</span></span>
+          <span class="status done">Completed</span>
+        </li>
+        <li>
+          <span class="mark">•</span>
+          <span class="body"><strong class="editable">Elements of AI — University of Helsinki</strong>
+          <span class="editable">Foundations of artificial intelligence.</span></span>
+          <span class="status">Planned</span>
+        </li>
+        
+        
+      <li>
+    <span class="mark">•</span>
+    <span class="body"><strong class="editable">Ongoing writing of a Research Paper</strong>
+    <span class="editable"><br></span></span>
+    <span class="status">Planned</span>
+  </li><li>
+    <span class="mark">•</span>
+    <span class="body"><strong class="editable">Finalizing and Publishing my Novel</strong>
+    <span class="editable">What it covers.</span></span>
+    <span class="status">Planned</span>
+  </li></ul>
+      <button class="add-btn edit-ui" type="button" data-add="certs">+ Add certificate</button>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <p class="eyebrow reveal"><span class="num">04</span> Building</p>
+      <h2 class="reveal">Projects</h2>
+      <p class="reveal editable">Small things I’m building while I learn — this section grows as I do. Each project links back to my GitHub.</p>
+      <div class="cards reveal" data-list="projects">
+        <div class="card">
+          <span class="tag editable">Python</span>
+          <h3 class="editable">Practice projects</h3>
+          <p class="editable">Small scripts and exercises from my Python Essentials work — the code that turned lessons into habits.</p>
+        </div>
+        <div class="card">
+          <span class="tag editable">Linux</span>
+          <h3 class="editable">Linux tinkering</h3>
+          <p class="editable">Setting up, breaking, and fixing my own Linux environment to understand how computers really work under the hood.</p>
+        </div>
+        
+      </div>
+      <button class="add-btn edit-ui" type="button" data-add="projects">+ Add project</button>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <p class="eyebrow reveal"><span class="num">05</span> Say hello</p>
+      <h2 class="reveal">Get in touch</h2>
+      <p class="lead reveal editable">Working on something interesting, or just want to connect? I’d love to hear from you.</p>
+      <div class="contact-grid reveal" data-contact="">
+        <a class="contact-row" data-type="email" href="mailto:aibelshibin7@gmail.com">
+          <span class="c-label">Email</span>
+          <span class="c-val editable">aibelshibin7@gmail.com</span>
+          <span class="c-arrow">↗</span>
+        </a>
+        <a class="contact-row" data-type="github" href="https://github.com/wizard142" target="_blank" rel="noopener">
+          <span class="c-label">GitHub</span>
+          <span class="c-val editable">wizard142</span>
+          <span class="c-arrow">↗</span>
+        </a>
+        <a class="contact-row" data-type="phone" href="tel:+97430729903">
+          <span class="c-label">Phone</span>
+          <span class="c-val editable">+974 30729903</span>
+          <span class="c-arrow">↗</span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p class="motto">Learning. Building. Creating.</p>
+    <p>© <span id="yr">2026</span> Aibel Shibin</p>
+  </footer>
+
+  <!-- edit affordances -->
+  <button id="lockBtn" title="Edit site" aria-label="Edit site">✎</button>
+
+  <div id="editBar" class="edit-ui" aria-hidden="true">
+    <span class="flag">Editing</span>
+    <button type="button" id="btnDownload">↓ Download updated site</button>
+    <button type="button" id="btnExit">Done</button>
+  </div>
+
+  <div id="lockModal" hidden="">
+    <div class="modal-card">
+      <h3>Edit mode</h3>
+      <p>Enter your password to edit this site.</p>
+      <input id="pwInput" type="password" placeholder="Password" autocomplete="off">
+      <div class="modal-actions">
+        <button id="pwCancel" type="button">Cancel</button>
+        <button id="pwOk" type="button">Unlock</button>
+      </div>
+      <p id="pwErr" class="pw-err" hidden="">Wrong password — try again.</p>
+    </div>
+  </div>
+
+  <!-- item templates (used by the editor) -->
+  <template id="tpl-sports"><li>
+    <span class="mark">00</span>
+    <span class="body"><strong class="editable">New entry</strong>
+    <span class="editable">Describe it here.</span></span>
+  </li></template>
+  <template id="tpl-certs"><li>
+    <span class="mark">•</span>
+    <span class="body"><strong class="editable">New certificate</strong>
+    <span class="editable">What it covers.</span></span>
+    <span class="status">Planned</span>
+  </li></template>
+  <template id="tpl-projects"><div class="card">
+    <span class="tag editable">Tag</span>
+    <h3 class="editable">New project</h3>
+    <p class="editable">Describe your project here.</p>
+  </div></template>
+
+  <script>
+  /* ============================================================
+     YOUR EDIT PASSWORD  —  change the word below to your own secret.
+     (Keep the quotes.)  This soft-lock stops casual visitors from
+     opening edit mode. Real protection is your GitHub login: nothing
+     goes live until YOU download and re-upload the file.
+  ============================================================ */
+  const EDIT_PASSWORD = "monoedit";
+
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  /* ---------- scroll: progress bar, scrollspy, hint ---------- */
+  (function(){
+    var progress=document.getElementById('progress');
+    var sections=[].slice.call(document.querySelectorAll('main section[id]'));
+    var links=[].slice.call(document.querySelectorAll('nav a'));
+    function onScroll(){
+      var st=window.scrollY||document.documentElement.scrollTop;
+      var h=document.documentElement.scrollHeight-window.innerHeight;
+      progress.style.width=(h>0?(st/h*100):0)+'%';
+      document.body.classList.toggle('scrolled', st>40);
+      var cur=sections.length?sections[0]:null;
+      sections.forEach(function(s){ if(st>=s.offsetTop-150) cur=s; });
+      links.forEach(function(a){ a.classList.toggle('active', cur && a.getAttribute('href')==='#'+cur.id); });
+    }
+    window.addEventListener('scroll', onScroll, {passive:true});
+    window.addEventListener('resize', onScroll);
+    onScroll();
+  })();
+
+  /* ---------- reveal on scroll ---------- */
+  (function(){
+    var revs = [].slice.call(document.querySelectorAll('.reveal'));
+    if(!('IntersectionObserver' in window)){ revs.forEach(function(el){el.classList.add('is-visible');}); return; }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('is-visible'); io.unobserve(en.target);} });
+    }, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+    revs.forEach(function(el){
+      var i=0, s=el.previousElementSibling;
+      while(s){ if(s.classList&&s.classList.contains('reveal')) i++; s=s.previousElementSibling; }
+      el.style.transitionDelay = Math.min(i,6)*70 + 'ms';
+      io.observe(el);
+    });
+  })();
+
+  /* ---------- contact links rebuild from editable text ---------- */
+  function syncContacts(){
+    [].forEach.call(document.querySelectorAll('[data-contact] .contact-row'), function(row){
+      var type=row.getAttribute('data-type');
+      var valEl=row.querySelector('.c-val'); if(!valEl) return;
+      var val=(valEl.textContent||'').trim();
+      var href='#';
+      if(type==='email') href='mailto:'+val;
+      else if(type==='phone') href='tel:'+val.replace(/[^0-9+]/g,'');
+      else if(type==='github') href=/^https?:\/\//i.test(val) ? val : 'https://github.com/'+val.replace(/^@/,'');
+      row.setAttribute('href',href);
+    });
+  }
+  syncContacts();
+  // prevent navigation while editing; keep hrefs in sync as you type
+  [].forEach.call(document.querySelectorAll('[data-contact] .contact-row'), function(row){
+    row.addEventListener('click', function(e){ if(document.body.classList.contains('editing')) e.preventDefault(); });
+    var v=row.querySelector('.c-val');
+    if(v) v.addEventListener('input', syncContacts);
+  });
+
+  /* ---------- editor ---------- */
+  var body = document.body;
+  var listCfg = { sports:{tpl:'tpl-sports'}, certs:{tpl:'tpl-certs'}, projects:{tpl:'tpl-projects'} };
+
+  function itemsOf(listEl){
+    return [].slice.call(listEl.children).filter(function(c){ return c.matches('li, .card'); });
+  }
+  function renumber(listEl){
+    if(!listEl.hasAttribute('data-renumber')) return;
+    itemsOf(listEl).forEach(function(li,i){
+      var m=li.querySelector('.mark'); if(m) m.textContent = String(i+1).padStart(2,'0');
+    });
+  }
+  function addDelBtn(item){
+    if(item.querySelector('.item-del')) return;
+    var b=document.createElement('button');
+    b.className='item-del edit-ui'; b.type='button'; b.title='Delete'; b.innerHTML='&times;';
+    b.addEventListener('click', function(){
+      var list=item.closest('[data-list]'); item.remove(); if(list) renumber(list);
+    });
+    item.appendChild(b);
+  }
+  function setEditable(on){
+    [].forEach.call(document.querySelectorAll('.editable'), function(el){
+      if(on) el.setAttribute('contenteditable','true'); else el.removeAttribute('contenteditable');
+    });
+  }
+  function enterEdit(){
+    body.classList.add('editing');
+    [].forEach.call(document.querySelectorAll('[data-list]'), function(list){ itemsOf(list).forEach(addDelBtn); });
+    setEditable(true);
+    document.getElementById('editBar').setAttribute('aria-hidden','false');
+  }
+  function exitEdit(){
+    body.classList.remove('editing');
+    [].forEach.call(document.querySelectorAll('.item-del'), function(b){ b.remove(); });
+    setEditable(false);
+    syncContacts();
+    document.getElementById('editBar').setAttribute('aria-hidden','true');
+  }
+
+  [].forEach.call(document.querySelectorAll('[data-add]'), function(btn){
+    btn.addEventListener('click', function(){
+      var key=btn.getAttribute('data-add');
+      var list=document.querySelector('[data-list="'+key+'"]');
+      var tpl=document.getElementById(listCfg[key].tpl);
+      var node=tpl.content.firstElementChild.cloneNode(true);
+      list.appendChild(node);
+      addDelBtn(node);
+      node.querySelectorAll('.editable').forEach(function(el){ el.setAttribute('contenteditable','true'); });
+      renumber(list);
+      node.scrollIntoView({behavior:'smooth', block:'center'});
+    });
+  });
+
+  document.addEventListener('click', function(e){
+    if(!body.classList.contains('editing')) return;
+    var s=e.target.closest('.status'); if(!s) return;
+    if(s.classList.contains('done')){ s.classList.remove('done'); s.textContent='Planned'; }
+    else { s.classList.add('done'); s.textContent='Completed'; }
+  });
+
+  var modal=document.getElementById('lockModal');
+  var pwInput=document.getElementById('pwInput');
+  var pwErr=document.getElementById('pwErr');
+  function openModal(){ pwErr.hidden=true; pwInput.value=''; modal.hidden=false; setTimeout(function(){pwInput.focus();},50); }
+  function closeModal(){ modal.hidden=true; }
+  function tryUnlock(){
+    if(pwInput.value === EDIT_PASSWORD){ closeModal(); enterEdit(); }
+    else { pwErr.hidden=false; pwInput.select(); }
+  }
+  document.getElementById('lockBtn').addEventListener('click', function(){
+    if(body.classList.contains('editing')) exitEdit(); else openModal();
+  });
+  document.getElementById('pwOk').addEventListener('click', tryUnlock);
+  document.getElementById('pwCancel').addEventListener('click', closeModal);
+  pwInput.addEventListener('keydown', function(e){ if(e.key==='Enter') tryUnlock(); if(e.key==='Escape') closeModal(); });
+  modal.addEventListener('click', function(e){ if(e.target===modal) closeModal(); });
+  document.getElementById('btnExit').addEventListener('click', exitEdit);
+
+  document.getElementById('btnDownload').addEventListener('click', function(){
+    syncContacts();
+    var clone=document.documentElement.cloneNode(true);
+    clone.querySelectorAll('.item-del').forEach(function(e){ e.remove(); });
+    clone.querySelectorAll('[contenteditable]').forEach(function(e){ e.removeAttribute('contenteditable'); });
+    clone.querySelectorAll('.is-visible').forEach(function(e){ e.classList.remove('is-visible'); });
+    clone.querySelectorAll('nav a.active').forEach(function(e){ e.classList.remove('active'); });
+    clone.querySelectorAll('[style]').forEach(function(e){ if(e.id==='progress'||e.classList.contains('reveal')) e.removeAttribute('style'); });
+    var b=clone.querySelector('body'); if(b){ b.classList.remove('editing'); b.classList.remove('scrolled'); }
+    var m=clone.querySelector('#lockModal'); if(m) m.setAttribute('hidden','');
+    var pi=clone.querySelector('#pwInput'); if(pi) pi.removeAttribute('value');
+    var eb=clone.querySelector('#editBar'); if(eb) eb.setAttribute('aria-hidden','true');
+    var html='<!DOCTYPE html>\n<html lang="en">\n'+clone.innerHTML+'\n</html>';
+    var blob=new Blob([html], {type:'text/html'});
+    var url=URL.createObjectURL(blob);
+    var a=document.createElement('a'); a.href=url; a.download='index.html';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function(){ URL.revokeObjectURL(url); }, 500);
+  });
+  </script>
+
+
+</body>
+</html>
