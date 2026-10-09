@@ -1,210 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aibel Shibin — Student-athlete &amp; aspiring author</title>
-<meta name="description" content="Aibel Shibin — 10th-grade student in Qatar, aspiring author, student-athlete, and coder. Learning. Building. Creating.">
-<script>document.documentElement.className += ' js';</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..600&amp;family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&amp;display=swap" rel="stylesheet">
-<style>
-  :root{
-    --paper:#F5F1EA;
-    --ink:#111111;
-    --ink-soft:#3a3a3a;
-    --muted:#6b6b6b;
-    --line:#dcd6cb;
-    --card:#efeae1;
-    --maxw:920px;
-  }
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    margin:0;background:var(--paper);color:var(--ink);
-    font-family:"Newsreader", Georgia, "Times New Roman", serif;
-    font-size:19px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;
-  }
-
-  /* ---- scroll progress ---- */
-  #progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--ink);z-index:60;transition:width .12s linear;}
-
-  /* ---- paper grain ---- */
-  #grain{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.04;mix-blend-mode:multiply;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
-
-  /* ---- organic corner blobs ---- */
-  .blob{position:fixed;z-index:0;pointer-events:none;opacity:0.06;fill:var(--ink);}
-  .blob.tl{top:-140px;left:-160px;width:420px;height:420px;animation:floatA 17s ease-in-out infinite;}
-  .blob.br{bottom:-160px;right:-170px;width:460px;height:460px;animation:floatB 21s ease-in-out infinite;}
-  @keyframes floatA{0%,100%{transform:translate(0,0) rotate(0deg);}50%{transform:translate(16px,-20px) rotate(6deg);}}
-  @keyframes floatB{0%,100%{transform:translate(0,0) rotate(0deg);}50%{transform:translate(-18px,14px) rotate(-6deg);}}
-
-  .wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;padding:0 26px;}
-
-  /* ---- hero ---- */
-  header.hero{padding:82px 0 44px;text-align:center;}
-  .avatar{
-    position:relative;width:112px;height:112px;border-radius:50%;
-    background:var(--ink);color:var(--paper);
-    display:flex;align-items:center;justify-content:center;margin:0 auto 30px;
-    font-family:"Fraunces", Georgia, serif;font-weight:600;font-size:60px;line-height:1;
-    box-shadow:0 8px 30px rgba(0,0,0,.18);user-select:none;
-    transition:transform .5s cubic-bezier(.2,.8,.2,1), box-shadow .5s;
-  }
-  .avatar::before{content:"";position:absolute;inset:-11px;border-radius:50%;border:1.5px dashed rgba(17,17,17,.28);animation:spin 24s linear infinite;}
-  @keyframes spin{to{transform:rotate(360deg);}}
-  .avatar:hover{transform:translateY(-4px) rotate(-4deg);box-shadow:0 14px 40px rgba(0,0,0,.24);}
-  .avatar span{transform:translateY(-2px);}
-  h1{font-family:"Fraunces", Georgia, serif;font-weight:600;font-size:clamp(40px,7.4vw,68px);letter-spacing:-0.015em;margin:0 0 14px;line-height:1.0;}
-  .headline{font-size:clamp(17px,2.4vw,21px);color:var(--ink-soft);font-style:italic;margin:0 auto 24px;max-width:620px;}
-  .pill{display:inline-block;border:1.5px solid var(--ink);border-radius:999px;padding:9px 24px;font-family:"Fraunces", Georgia, serif;font-weight:500;font-size:15px;letter-spacing:0.16em;text-transform:uppercase;}
-  .scroll-hint{display:block;margin:38px auto 0;width:26px;height:26px;color:var(--muted);font-size:24px;line-height:26px;animation:bob 1.9s ease-in-out infinite;transition:opacity .4s;}
-  @keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(7px);}}
-  body.scrolled .scroll-hint{opacity:0;}
-
-  /* ---- nav ---- */
-  nav{position:sticky;top:0;z-index:5;background:rgba(245,241,234,0.82);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);margin-top:32px;}
-  nav .wrap{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 26px;padding-top:14px;padding-bottom:14px;}
-  nav a{color:var(--muted);text-decoration:none;font-size:15px;letter-spacing:0.06em;text-transform:uppercase;font-family:"Fraunces", Georgia, serif;font-weight:500;padding:2px 0;border-bottom:1.5px solid transparent;transition:border-color .25s,color .25s;}
-  nav a:hover{color:var(--ink);border-bottom-color:var(--ink);}
-  nav a.active{color:var(--ink);border-bottom-color:var(--ink);}
-
-  /* ---- sections ---- */
-  section{padding:60px 0;border-bottom:1px solid var(--line);}
-  section:last-of-type{border-bottom:none;}
-  .eyebrow{font-family:"Fraunces", Georgia, serif;font-size:14px;letter-spacing:0.22em;text-transform:uppercase;color:var(--muted);margin:0 0 12px;display:flex;align-items:center;}
-  .eyebrow .num{color:var(--ink);margin-right:12px;padding-right:12px;border-right:1px solid var(--line);font-variant-numeric:tabular-nums;}
-  h2{font-family:"Fraunces", Georgia, serif;font-weight:600;font-size:clamp(28px,4.6vw,42px);margin:0 0 24px;letter-spacing:-0.015em;line-height:1.08;}
-  p{margin:0 0 18px;}
-  p.lead{font-size:21px;color:var(--ink-soft);}
-
-  /* cards / lists */
-  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:6px;}
-  .card{position:relative;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s;}
-  .card:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,0,0,.08);}
-  .card h3{font-family:"Fraunces", Georgia, serif;font-weight:600;font-size:22px;margin:0 0 8px;}
-  .card p{font-size:17px;color:var(--ink-soft);margin:0;}
-  .card .tag{display:inline-block;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);font-family:"Fraunces",serif;margin-bottom:12px;}
-
-  ul.clean{list-style:none;padding:0;margin:0;}
-  ul.clean li{position:relative;padding:16px 0;border-top:1px solid var(--line);display:flex;gap:16px;align-items:baseline;}
-  ul.clean li:first-child{border-top:none;}
-  ul.clean .mark{font-family:"Fraunces",serif;font-weight:600;font-size:18px;min-width:22px;}
-  ul.clean .body strong{font-weight:600;}
-  ul.clean .body span{display:block;color:var(--muted);font-size:16px;}
-
-  .status{display:inline-block;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;border:1px solid var(--line);border-radius:999px;padding:3px 12px;color:var(--muted);font-family:"Fraunces",serif;margin-left:auto;white-space:nowrap;}
-  .status.done{color:var(--paper);background:var(--ink);border-color:var(--ink);}
-
-  /* ---- contact ---- */
-  .contact-grid{display:flex;flex-direction:column;border-top:1px solid var(--line);margin-top:14px;max-width:580px;}
-  .contact-row{display:flex;align-items:center;gap:16px;padding:20px 4px;border-bottom:1px solid var(--line);text-decoration:none;color:var(--ink);transition:padding-left .28s cubic-bezier(.2,.8,.2,1),background .25s;}
-  .contact-row:hover{padding-left:16px;background:linear-gradient(90deg,rgba(17,17,17,.03),transparent);}
-  .c-label{font-family:"Fraunces",serif;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);min-width:76px;}
-  .c-val{font-size:19px;flex:1;word-break:break-word;}
-  .c-arrow{color:var(--muted);font-size:19px;transition:transform .28s,color .28s;}
-  .contact-row:hover .c-arrow{transform:translate(4px,-4px);color:var(--ink);}
-
-  footer{text-align:center;padding:48px 0 70px;color:var(--muted);font-size:15px;}
-  footer .motto{font-family:"Fraunces",serif;letter-spacing:0.14em;text-transform:uppercase;font-size:13px;color:var(--ink-soft);}
-
-  /* ---- reveal on scroll ---- */
-  .js .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.2,.8,.2,1),transform .7s cubic-bezier(.2,.8,.2,1);}
-  .js .reveal.is-visible{opacity:1;transform:none;}
-
-  /* ============ EDIT MODE UI ============ */
-  #lockBtn{position:fixed;right:16px;bottom:16px;z-index:40;width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--muted);font-size:16px;cursor:pointer;opacity:.5;transition:opacity .2s,transform .2s;display:flex;align-items:center;justify-content:center;}
-  #lockBtn:hover{opacity:1;transform:scale(1.08);}
-
-  .edit-ui{display:none;}
-  body.editing .edit-ui{display:flex;}
-
-  .item-del{position:absolute;top:8px;right:0;width:26px;height:26px;border-radius:50%;border:1px solid var(--ink);background:var(--paper);color:var(--ink);font-size:16px;line-height:1;cursor:pointer;align-items:center;justify-content:center;padding:0;z-index:3;}
-  .card .item-del{top:10px;right:10px;}
-  .item-del:hover{background:var(--ink);color:var(--paper);}
-
-  .add-btn{margin-top:16px;font-family:"Fraunces",serif;font-size:15px;letter-spacing:.04em;color:var(--ink-soft);background:transparent;border:1.5px dashed var(--muted);border-radius:12px;padding:12px 18px;cursor:pointer;transition:background .2s,border-color .2s;align-items:center;justify-content:center;width:100%;}
-  .add-btn:hover{background:var(--card);border-color:var(--ink);color:var(--ink);}
-
-  body.editing ul.clean li{padding-right:40px;}
-  body.editing .status{margin-right:6px;}
-  body.editing .editable{cursor:text;border-radius:4px;transition:box-shadow .15s;}
-  body.editing .editable:hover{box-shadow:0 0 0 2px var(--line);}
-  body.editing .editable:focus{outline:none;box-shadow:0 0 0 2px var(--ink);}
-  body.editing .status{cursor:pointer;}
-  body.editing .status:hover{box-shadow:0 0 0 2px var(--ink);}
-  body.editing .contact-row{pointer-events:auto;}
-  body.editing .c-arrow{display:none;}
-
-  #editBar{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);z-index:41;background:var(--ink);color:var(--paper);border-radius:999px;padding:10px 12px 10px 22px;gap:14px;align-items:center;box-shadow:0 10px 34px rgba(0,0,0,.28);font-family:"Fraunces",serif;font-size:15px;}
-  #editBar .flag{letter-spacing:.1em;text-transform:uppercase;font-size:12px;opacity:.75;}
-  #editBar button{font-family:"Fraunces",serif;font-size:14px;border-radius:999px;border:1px solid var(--paper);background:transparent;color:var(--paper);padding:8px 16px;cursor:pointer;transition:background .2s,color .2s;}
-  #editBar button:hover{background:var(--paper);color:var(--ink);}
-  #editBar #btnDownload{background:var(--paper);color:var(--ink);font-weight:600;}
-  #editBar #btnDownload:hover{opacity:.85;}
-
-  #lockModal{position:fixed;inset:0;z-index:50;background:rgba(20,18,15,.5);backdrop-filter:blur(3px);align-items:center;justify-content:center;display:none;}
-  #lockModal:not([hidden]){display:flex;}
-  .modal-card{background:var(--paper);border-radius:18px;padding:30px 28px;width:min(360px,90vw);box-shadow:0 20px 60px rgba(0,0,0,.3);text-align:center;}
-  .modal-card h3{font-family:"Fraunces",serif;font-size:24px;margin:0 0 6px;}
-  .modal-card p{font-size:16px;color:var(--muted);margin:0 0 18px;}
-  #pwInput{width:100%;padding:12px 14px;font-size:17px;font-family:inherit;border:1.5px solid var(--line);border-radius:10px;background:#fff;margin-bottom:16px;}
-  #pwInput:focus{outline:none;border-color:var(--ink);}
-  .modal-actions{display:flex;gap:10px;justify-content:center;}
-  .modal-actions button{font-family:"Fraunces",serif;font-size:15px;padding:11px 22px;border-radius:999px;cursor:pointer;border:1.5px solid var(--ink);}
-  #pwOk{background:var(--ink);color:var(--paper);}
-  #pwCancel{background:transparent;color:var(--ink);}
-  .pw-err{color:#a11;font-size:14px;margin:12px 0 0;}
-
-  @media (max-width:560px){
-    body{font-size:18px;}
-    header.hero{padding:60px 0 34px;}
-    section{padding:46px 0;}
-    #editBar{flex-wrap:wrap;justify-content:center;left:12px;right:12px;transform:none;border-radius:18px;padding:12px 14px;}
-  }
-
-  @media (prefers-reduced-motion: reduce){
-    .js .reveal{opacity:1;transform:none;transition:none;}
-    .blob,.avatar::before,.scroll-hint{animation:none;}
-    .avatar,.card,.btn,.contact-row{transition:none;}
-    html{scroll-behavior:auto;}
-  }
-</style>
-</head>
-<body class="">
-
-  <div id="progress"></div>
-  <div id="grain"></div>
-
-  <!-- organic corner blobs -->
-  <svg class="blob tl" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><path d="M46.6,-59.2C58.9,-49.2,66.3,-33.4,69.8,-16.7C73.3,0,72.9,17.6,65.2,31.3C57.5,45,42.5,54.8,26.3,61.4C10.1,68,-7.3,71.4,-23.9,67.2C-40.5,63,-56.3,51.2,-64.7,35.6C-73.1,20,-74.1,0.6,-69.4,-16.7C-64.7,-34,-54.3,-49.2,-40.7,-58.9C-27.1,-68.6,-10.3,-72.8,4.6,-78.4C19.5,-84,39,-69.2,46.6,-59.2Z" transform="translate(100 100)"></path></svg>
-  <svg class="blob br" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><path d="M39.5,-52.9C50.3,-44.3,57.6,-31.8,62.2,-17.6C66.8,-3.4,68.7,12.5,63.4,26C58.1,39.5,45.6,50.6,31.4,57.7C17.2,64.8,1.3,67.9,-15.4,66.1C-32.1,64.3,-49.6,57.6,-59.6,44.9C-69.6,32.2,-72.1,13.5,-70.1,-4.4C-68.1,-22.3,-61.6,-39.4,-49.4,-48.3C-37.2,-57.2,-19.3,-57.9,-2,-55.2C15.3,-52.5,28.7,-61.5,39.5,-52.9Z" transform="translate(100 100)"></path></svg>
-
-  <!-- HERO -->
-  <header class="hero">
-    <div class="wrap">
-      <div class="avatar reveal" aria-hidden="true"><span>A</span></div>
-      <h1 class="reveal">Aibel Shibin</h1>
-      <p class="headline reveal">Student-athlete &amp; aspiring author</p>
-      <span class="pill reveal">Learning. Building. Creating.</span>
-      <a class="scroll-hint" href="#about" aria-label="Scroll down">↓</a>
-    </div>
-  </header>
-
-  <!-- NAV -->
-  <nav>
-    <div class="wrap">
-      <a href="#about" class="">About</a>
-      <a href="#sports" class="">Sports</a>
-      <a href="#certs" class="">Certifications</a>
-      <a href="#projects" class="">Projects</a>
-      <a href="#contact" class="">Contact</a>
-    </div>
-  </nav>
-
-  <main class="wrap">
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Aibel Shibin — student-athlete, aspiring author, and coder in Qatar."><meta name="site-revision" content="dark-editor-20261009-v1"><meta name="theme-color" content="#101110"><title>Aibel Shibin — Learning. Building. Creating.</title><style>
+:root{color-scheme:dark;--bg:#101110;--surface:#171817;--white:#f1f0e9;--muted:#9b9d94;--line:#30322e;--max:1080px}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:90px}body{margin:0;background:var(--bg);color:var(--white);font:16px/1.75 Arial,Helvetica,sans-serif}::selection{background:#dbddca;color:#101110}a{color:inherit}button,input,select{font:inherit}button,a,input,select,[contenteditable]{outline-offset:5px}button{cursor:pointer}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--white)}.wrap{max-width:var(--max);margin:auto;padding:0 40px}.topbar{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;min-height:90px;border-bottom:1px solid var(--line)}.brand{text-decoration:none;font:italic 25px Georgia,serif}.small,.eyebrow,.tag,.c-label,.motto{font-size:10px;letter-spacing:.18em;text-transform:uppercase}.small{color:var(--muted)}.topbar .small:before{content:'';display:inline-block;width:5px;height:5px;background:#bdc2a6;border-radius:50%;margin-right:10px}.hero{padding:95px 0 76px;position:relative}.hero-meta{display:flex;justify-content:space-between;color:var(--muted);margin-bottom:38px}.hero h1{font:normal clamp(65px,11vw,126px)/.95 Georgia,serif;letter-spacing:-.065em;margin:0 0 32px;max-width:800px}.hero h1 span{color:#96998e;font-style:italic}.hero-bottom{display:flex;justify-content:space-between;align-items:end;gap:40px}.headline{color:#b5b7af;max-width:400px;font-size:17px;margin:0}.hero-note{font:italic 22px Georgia,serif;margin:12px 0 0;color:#e2e3d9}.hero-arrow{display:grid;place-items:center;width:56px;height:56px;border:1px solid #51544a;border-radius:50%;text-decoration:none;font-size:24px;transition:background .2s}.hero-arrow:hover{background:var(--surface)}nav{position:sticky;top:0;z-index:10;background:#101110f2;backdrop-filter:blur(16px);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}nav .wrap{display:flex;gap:30px;overflow:auto;padding-top:18px;padding-bottom:18px}nav a{font-size:11px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:var(--muted);white-space:nowrap}nav a:hover,nav a.active{color:var(--white)}main section{position:relative;padding:65px 0 72px;border-bottom:1px solid var(--line);display:flow-root}.eyebrow{color:var(--muted);margin:0 0 28px;display:flex;gap:15px}.num{color:#d7dbca;font-variant-numeric:tabular-nums}h2{font:normal clamp(32px,5vw,52px)/1.15 Georgia,serif;letter-spacing:-.035em;margin:0 0 28px}main section>p:not(.eyebrow){max-width:740px;color:#b5b7ae}p{margin:0 0 20px}p.lead{color:var(--white)!important;font-size:20px;line-height:1.6}.clean{list-style:none;padding:0;margin:0}.clean li{position:relative;display:flex;gap:25px;align-items:baseline;padding:25px 0;border-top:1px solid var(--line)}.mark{color:#85897e;font:italic 16px Georgia,serif;min-width:25px}.body{flex:1}.body strong{font-size:17px;font-weight:normal;color:#e4e6da}.body>span{display:block;color:var(--muted);font-size:14px;margin-top:6px}.status{font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);white-space:nowrap;border:1px solid var(--line);padding:5px 10px;border-radius:3px}.status.done{color:#d4dbc1}.cards{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}.card{background:var(--bg);position:relative;padding:32px;transition:background .2s}.card:hover{background:var(--surface)}.tag{display:block;color:var(--muted);margin-bottom:22px}.card h3{font:normal 26px Georgia,serif;margin:0 0 14px}.card p{font-size:14px;color:var(--muted);margin:0}.contact-grid{border-top:1px solid var(--line)}.contact-row{position:relative;display:flex;gap:20px;align-items:center;padding:24px 0;border-bottom:1px solid var(--line);text-decoration:none}.c-label{min-width:90px;color:var(--muted)}.c-val{flex:1;overflow-wrap:anywhere}.c-arrow{color:var(--muted);display:block;width:10px;height:10px;border-top:1px solid;border-right:1px solid;position:relative}.c-arrow:after{content:"";position:absolute;width:13px;height:1px;background:currentColor;transform:rotate(-45deg);top:4px;right:-2px}footer{padding:42px 0 80px;display:flex;justify-content:space-between;gap:25px;color:var(--muted);font-size:11px}footer p{margin:0}.motto{color:#d2d6c7}.editor-launch{background:none;border:1px solid var(--line);color:var(--muted);padding:8px 14px;font-size:11px}.editor-launch:hover{color:var(--white)}.editor-only{display:none}body.editing .editor-only{display:flex}body.editing{padding-bottom:150px}body.editing [contenteditable=true]{outline:1px dashed #656958;outline-offset:5px;border-radius:2px}body.editing [contenteditable=true]:focus{outline:1px solid #d4dbc1}body.editing section{padding-top:95px}.section-tools{position:absolute;top:25px;left:0;right:0;gap:6px;flex-wrap:wrap}.tool{font-size:11px;background:var(--surface);border:1px solid #45483f;color:var(--white);padding:7px 11px;border-radius:3px}.tool:hover{background:#30332b}.danger{color:#e5b7ab}.block-tools{gap:4px;margin:12px 0;clear:both;flex-wrap:wrap}.block-tools .tool{font-size:10px;padding:4px 9px}.editor-bar{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);z-index:30;background:#23261fee;border:1px solid #535849;backdrop-filter:blur(15px);padding:14px 18px;width:min(950px,calc(100% - 32px));gap:8px;align-items:center;flex-wrap:wrap;box-shadow:0 20px 60px #0008}.editor-bar .hint{width:100%;font-size:11px;color:#b4b9a6;margin:0}.primary{background:#e3e7d5;color:#151710;border-color:#e3e7d5}.editor-state{font-size:10px;color:#c5ceb3;margin-right:auto}.toast{position:fixed;top:18px;left:50%;transform:translateX(-50%);z-index:80;background:#e3e7d5;color:#141610;padding:12px 20px;font-size:13px;max-width:90vw}.toast:empty{display:none}dialog{background:var(--surface);color:var(--white);border:1px solid #505448;padding:30px;width:min(430px,calc(100% - 32px))}dialog::backdrop{background:#000b}dialog h2{font-size:30px}dialog p{font-size:13px;color:var(--muted)}dialog label{display:block;font-size:12px;margin:14px 0 6px}dialog input,dialog select{width:100%;background:var(--bg);color:var(--white);border:1px solid #505448;padding:11px}dialog .actions{display:flex;gap:8px;margin-top:24px}.entry-link{display:inline-block;margin-top:16px;color:#d7dbcb;font-size:12px}body.editing .status{cursor:pointer}body.editing .hero,body.editing footer{border:1px dashed var(--line)}
+@media(min-width:900px){#about{padding-left:280px}#about .eyebrow{position:absolute;left:0;top:75px}#about h2{font-size:40px}}@media(max-width:600px){.wrap{padding:0 22px}.topbar{min-height:75px}.topbar .small{font-size:8px}.hero{padding:60px 0}.hero-meta{font-size:9px}.hero h1{font-size:clamp(58px,15vw,86px)}.hero-bottom{gap:15px}.headline{font-size:15px}.hero-note{font-size:18px}nav .wrap{gap:24px}main section{padding:45px 0}.cards{grid-template-columns:1fr}.card{padding:26px}.clean li{gap:12px;flex-wrap:wrap}.status{margin-left:37px}.contact-row{gap:10px}.c-label{min-width:60px;font-size:9px}.c-val{font-size:13px}footer{flex-wrap:wrap}.editor-bar{bottom:8px;padding:10px}.tool{padding:7px 9px}.editor-state{width:100%}body.editing{padding-bottom:210px}body.editing #about .eyebrow{position:static}body.editing #about{padding-left:0}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style></head><body>
+<div class="wrap"><div class="topbar" id="topbar"><a class="brand editable" href="#">as.</a><span class="small editable">A work in progress, always.</span></div>
+<header class="hero" id="hero"><div class="hero-meta small"><span class="editable">Personal notebook / 001</span><span class="editable">Based in Qatar</span></div><h1 class="editable">Aibel<br><span>Shibin.</span></h1><div class="hero-bottom"><div><p class="headline editable">Student-athlete &amp; aspiring author.<br>Curious about what comes next.</p><p class="hero-note editable">Learning. Building. Creating.</p></div><a class="hero-arrow" href="#about" aria-label="Explore the site"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M5 5l14 14M5 19h14V5"/></svg></a></div></header></div>
+<nav aria-label="Sections"><div class="wrap" id="navigation"></div></nav><main class="wrap" id="sections">
 
     <!-- ABOUT -->
     <section id="about">
@@ -241,7 +43,7 @@
           <span class="editable">Competed at the CBSE Cluster stage.</span></span>
         </li>
       </ul>
-      <button class="add-btn edit-ui" type="button" data-add="sports">+ Add sports entry</button>
+
     </section>
 
     <!-- CERTIFICATIONS -->
@@ -267,8 +69,8 @@
           <span class="editable">Foundations of artificial intelligence.</span></span>
           <span class="status">Planned</span>
         </li>
-        
-        
+
+
       <li>
     <span class="mark">•</span>
     <span class="body"><strong class="editable">Ongoing writing of a Research Paper</strong>
@@ -280,7 +82,7 @@
     <span class="editable">Planned for 2027</span></span>
     <span class="status">Planned</span>
   </li></ul>
-      <button class="add-btn edit-ui" type="button" data-add="certs">+ Add certificate</button>
+
     </section>
 
     <!-- PROJECTS -->
@@ -299,7 +101,7 @@
           <h3 class="editable">Linux tinkering</h3>
           <p class="editable">Setting up, breaking, and fixing my own Linux environment to understand how computers really work under the hood.</p>
         </div>
-        
+
       <div class="card">
     <span class="tag editable">GITHUB</span>
     <h3 class="editable">ZENGE</h3>
@@ -309,7 +111,7 @@
     <h3 class="editable">Genie</h3>
     <p class="editable">Genie is an ai terminal assistant which converts normal human language into actual code.<br>(It's on my github)</p>
   </div></div>
-      <button class="add-btn edit-ui" type="button" data-add="projects">+ Add project</button>
+
     </section>
 
     <!-- CONTACT -->
@@ -321,236 +123,253 @@
         <a class="contact-row" data-type="email" href="mailto:aibelshibin7@gmail.com">
           <span class="c-label">Email</span>
           <span class="c-val editable">aibelshibin7@gmail.com</span>
-          <span class="c-arrow">↗</span>
+          <span class="c-arrow" aria-hidden="true"></span>
         </a>
         <a class="contact-row" data-type="github" href="https://github.com/wizard142" target="_blank" rel="noopener">
           <span class="c-label">GitHub</span>
           <span class="c-val editable">wizard142</span>
-          <span class="c-arrow">↗</span>
+          <span class="c-arrow" aria-hidden="true"></span>
         </a>
         <a class="contact-row" data-type="phone" href="tel:+97430729903">
           <span class="c-label">Phone</span>
           <span class="c-val editable">+974 30729903</span>
-          <span class="c-arrow">↗</span>
+          <span class="c-arrow" aria-hidden="true"></span>
         </a>
       </div>
     </section>
 
-  </main>
-
-  <footer>
-    <p class="motto">Learning. Building. Creating.</p>
-    <p>© <span id="yr">2026</span> Aibel Shibin</p>
-  </footer>
-
-  <!-- edit affordances -->
-  <button id="lockBtn" title="Edit site" aria-label="Edit site">✎</button>
-
-  <div id="editBar" class="edit-ui" aria-hidden="true">
-    <span class="flag">Editing</span>
-    <button type="button" id="btnDownload">↓ Download updated site</button>
-    <button type="button" id="btnExit">Done</button>
-  </div>
-
-  <div id="lockModal" hidden="">
-    <div class="modal-card">
-      <h3>Edit mode</h3>
-      <p>Enter your password to edit this site.</p>
-      <input id="pwInput" type="password" placeholder="Password" autocomplete="off">
-      <div class="modal-actions">
-        <button id="pwCancel" type="button">Cancel</button>
-        <button id="pwOk" type="button">Unlock</button>
-      </div>
-      <p id="pwErr" class="pw-err" hidden="">Wrong password — try again.</p>
-    </div>
-  </div>
-
-  <!-- item templates (used by the editor) -->
-  <template id="tpl-sports"><li>
-    <span class="mark">00</span>
-    <span class="body"><strong class="editable">New entry</strong>
-    <span class="editable">Describe it here.</span></span>
-  </li></template>
-  <template id="tpl-certs"><li>
-    <span class="mark">•</span>
-    <span class="body"><strong class="editable">New certificate</strong>
-    <span class="editable">What it covers.</span></span>
-    <span class="status">Planned</span>
-  </li></template>
-  <template id="tpl-projects"><div class="card">
-    <span class="tag editable">Tag</span>
-    <h3 class="editable">New project</h3>
-    <p class="editable">Describe your project here.</p>
-  </div></template>
-
-  <script>
-  /* ============================================================
-     YOUR EDIT PASSWORD  —  change the word below to your own secret.
-     (Keep the quotes.)  This soft-lock stops casual visitors from
-     opening edit mode. Real protection is your GitHub login: nothing
-     goes live until YOU download and re-upload the file.
-  ============================================================ */
-  const EDIT_PASSWORD = "monoedit";
-
-  document.getElementById('yr').textContent = new Date().getFullYear();
-
-  /* ---------- scroll: progress bar, scrollspy, hint ---------- */
-  (function(){
-    var progress=document.getElementById('progress');
-    var sections=[].slice.call(document.querySelectorAll('main section[id]'));
-    var links=[].slice.call(document.querySelectorAll('nav a'));
-    function onScroll(){
-      var st=window.scrollY||document.documentElement.scrollTop;
-      var h=document.documentElement.scrollHeight-window.innerHeight;
-      progress.style.width=(h>0?(st/h*100):0)+'%';
-      document.body.classList.toggle('scrolled', st>40);
-      var cur=sections.length?sections[0]:null;
-      sections.forEach(function(s){ if(st>=s.offsetTop-150) cur=s; });
-      links.forEach(function(a){ a.classList.toggle('active', cur && a.getAttribute('href')==='#'+cur.id); });
+  </main><div class="wrap"><footer id="footer"><div><p class="motto editable">A little better, every day.</p><p class="editable">© Aibel Shibin · <span id="yr">2026</span></p></div><button class="editor-launch" id="editButton">Edit this site ↗</button></footer></div>
+<div class="editor-bar editor-only" id="editorBar" aria-label="Site editor"><span class="editor-state" id="saveState" role="status">Editing your local copy</span><button class="tool" id="addSection">+ Section</button><button class="tool" id="undo">Undo</button><button class="tool" id="restore">Restore draft</button><button class="tool primary" id="publish">Publish to GitHub ↗</button><button class="tool" id="disconnect" hidden>Disconnect</button><button class="tool" id="download">Download site ↓</button><button class="tool" id="done">Done</button><p class="hint">Click outlined text to edit. Drafts save in this browser. Publish to GitHub to update the live site; Download site keeps a backup.</p></div>
+<dialog id="addDialog"><form id="addForm"><h2>Add a section</h2><label for="sectionTitle">Section title</label><input id="sectionTitle" required maxlength="100" placeholder="Achievements"><label for="sectionType">Layout</label><select id="sectionType"><option value="list">Entries / achievements</option><option value="text">Writing / text</option><option value="cards">Projects / cards</option><option value="contact">Contact / links</option></select><div class="actions"><button class="tool primary" type="submit">Add section</button><button class="tool" type="button" id="cancelDialog">Cancel</button></div></form></dialog>
+<dialog id="confirmDialog"><form method="dialog"><h2>Remove this content?</h2><p id="confirmMessage">You can undo this while editing.</p><div class="actions"><button class="tool danger" value="remove">Remove</button><button class="tool" value="cancel" autofocus>Keep it</button></div></form></dialog>
+<dialog id="linkDialog"><form id="linkForm"><h2>Edit link</h2><label for="linkLabel">Link text</label><input id="linkLabel" required maxlength="200"><label for="linkUrl">Destination</label><input id="linkUrl" required placeholder="https://example.com"><p>Use https://, http://, mailto:, tel:, or a section link such as #projects.</p><div class="actions"><button class="tool primary" type="submit">Save link</button><button class="tool" type="button" id="cancelLink">Cancel</button></div></form></dialog>
+<dialog id="publishDialog" aria-labelledby="publishTitle"><form id="publishForm"><h2 id="publishTitle">Publish your changes</h2><p>Updates <strong>wizard142/wizard142.github.io</strong> on <strong>main</strong>. GitHub Pages will deploy the changes.</p><div id="connectFields"><label for="githubToken">GitHub fine-grained token</label><input id="githubToken" type="password" autocomplete="off" spellcheck="false" placeholder="Paste your repository token here"><p><a href="https://github.com/settings/personal-access-tokens/new?name=Personal%20website%20editor&amp;target_name=wizard142&amp;contents=write" target="_blank" rel="noopener noreferrer">Create a GitHub token ↗</a>. Select only <strong>wizard142.github.io</strong> and allow <strong>Contents: Read and write</strong>. Set an expiry date. Enter it here, never in your site content.</p><p>The token stays in memory for this tab. It is sent only to GitHub’s API, never saved in drafts or downloaded files.</p></div><p id="publishStatus" role="status" aria-live="polite"></p><div class="actions"><button class="tool primary" type="submit" id="confirmPublish">Publish changes</button><button class="tool" type="button" id="cancelPublish">Cancel</button></div></form></dialog>
+<div class="toast" id="toast" role="status"></div><script>
+(() => {
+'use strict';
+const $ = id => document.getElementById(id);
+const main = $('sections'), hero = $('hero'), footer = $('footer'), topbar = $('topbar');
+let editing = false, history = [], pendingDelete = null, linkTarget = null, timer, toastTimer;
+function clean(root) {
+  const copy = root.cloneNode(true);
+  copy.querySelectorAll('[data-editor-ui]').forEach(el => el.remove());
+  copy.querySelectorAll('[contenteditable]').forEach(el => el.removeAttribute('contenteditable'));
+  return copy.innerHTML;
+}
+function snapshot() { return {main:clean(main),hero:clean(hero),footer:clean(footer),topbar:clean(topbar)}; }
+const original = snapshot();
+let hash = 0; for (const c of JSON.stringify(original)) hash = (Math.imul(hash,31) + c.charCodeAt(0)) | 0;
+const draftKey = 'aibel-site-draft-v2-' + hash;
+function notice(text) { $('toast').textContent = text; clearTimeout(toastTimer); toastTimer = setTimeout(() => $('toast').textContent = '',4500); }
+function save() {
+  clearTimeout(timer);
+  try { localStorage.setItem(draftKey,JSON.stringify(snapshot())); $('saveState').textContent = 'Draft saved in this browser'; }
+  catch { $('saveState').textContent = 'Storage unavailable — download to keep changes'; }
+}
+function checkpoint() { history.push(snapshot()); if(history.length > 50) history.shift(); }
+function apply(state) { main.innerHTML=state.main; hero.innerHTML=state.hero; footer.innerHTML=state.footer; topbar.innerHTML=state.topbar; refresh(); }
+function mutate(action) { checkpoint(); stripTools(); action(); refresh(); save(); }
+function stripTools() { document.querySelectorAll('[data-editor-ui]').forEach(el=>el.remove()); }
+function button(label,action,danger=false) {
+  const b=document.createElement('button'); b.type='button'; b.className='tool'+(danger?' danger':''); b.textContent=label; b.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();action();}); return b;
+}
+function tools(className) { const el=document.createElement('div'); el.className=className+' editor-only'; el.dataset.editorUi=''; return el; }
+function remove(target) {
+  pendingDelete=target; $('confirmMessage').textContent = target.matches('section') ? 'This removes the whole section and its entries. You can undo this while editing.' : 'You can undo this while editing.';
+  $('confirmDialog').showModal();
+}
+$('confirmDialog').addEventListener('close',()=>{ if($('confirmDialog').returnValue==='remove' && pendingDelete) mutate(()=>pendingDelete.remove()); pendingDelete=null; });
+function move(target,offset) {
+  mutate(()=>{
+    const siblings=[...target.parentElement.children],i=siblings.indexOf(target),neighbor=siblings[i+offset];
+    if(neighbor) {target.parentElement.insertBefore(target,offset<0?neighbor:neighbor.nextSibling);}
+  });
+}
+function editLink(target) { linkTarget=target; $('linkLabel').value=target.querySelector('.c-val')?.textContent || target.textContent; $('linkUrl').value=target.getAttribute('href') || 'https://'; $('linkDialog').showModal(); }
+function validUrl(value) { return /^(https?:\/\/[^\s]+|mailto:[^\s]+|tel:[+\d() .-]+|#[A-Za-z][\w-]*)$/i.test(value); }
+$('linkForm').addEventListener('submit',e=>{
+  e.preventDefault(); const value=$('linkUrl').value.trim();
+  if(!validUrl(value)) { $('linkUrl').setCustomValidity('Use a valid http, https, email, phone, or section link.'); $('linkUrl').reportValidity(); return; }
+  mutate(()=>{linkTarget.setAttribute('href',value); const label=linkTarget.querySelector('.c-val'); if(label) label.textContent=$('linkLabel').value; else linkTarget.textContent=$('linkLabel').value; if(linkTarget.matches('.contact-row')) linkTarget.dataset.type='custom'; });
+  $('linkDialog').close();
+});
+$('linkUrl').addEventListener('input',()=>$('linkUrl').setCustomValidity(''));
+$('cancelLink').addEventListener('click',()=>$('linkDialog').close());
+function paragraph() { const p=document.createElement('p'); p.className='editable'; p.textContent='Write something here.'; return p; }
+function entry(kind) {
+  const el=document.createElement(kind==='cards'?'div':kind==='contact'?'a':'li');
+  if(kind==='cards') { el.className='card'; el.innerHTML='<span class="tag editable">Category</span><h3 class="editable">New project</h3><p class="editable">A short description of what you’re building.</p>'; }
+  else if(kind==='contact') { el.className='contact-row'; el.dataset.type='custom'; el.href='https://example.com'; el.innerHTML='<span class="c-label editable">Link</span><span class="c-val editable">Your link</span><span class="c-arrow" aria-hidden="true"></span>'; }
+  else {el.innerHTML='<span class="mark">↗</span><span class="body"><strong class="editable">New achievement</strong><span class="editable">What happened, and when.</span></span><span class="status editable">Completed</span>'; }
+  return el;
+}
+function listKind(section) { if(section.querySelector('.cards'))return 'cards'; if(section.querySelector('.contact-grid'))return 'contact'; return 'list'; }
+function addEntry(section) {
+  const kind=listKind(section); let node;
+  mutate(()=>{
+    let container=section.querySelector('[data-list],.contact-grid');
+    if(!container){container=document.createElement('ul');container.className='clean';container.dataset.list='custom';section.append(container);}
+    node=entry(kind);container.append(node);
+  });
+  node.querySelector('.editable').focus();
+}
+function addText(section) { let p; mutate(()=>{p=paragraph();section.append(p);});p.focus(); }
+function addLink(target) {
+  let a; mutate(()=>{a=document.createElement('a');a.className='entry-link';a.href='https://example.com';a.textContent='View more ↗';target.append(a);});editLink(a);
+}
+function blockControls(target) {
+  const bar=tools('block-tools');
+  bar.append(button('Move up',()=>move(target,-1)),button('Move down',()=>move(target,1)),button('Remove',()=>remove(target),true));
+  if(target.matches('.card,li')) bar.append(button('+ Link',()=>addLink(target)));
+  if(target.matches('a'))bar.prepend(button('Edit link',()=>editLink(target)));
+  if(target.matches('li,.card'))target.append(bar); else target.after(bar);
+}
+function refresh() {
+  stripTools();
+  [...main.querySelectorAll('section')].forEach((section,index)=>{
+    section.querySelector('.num')?.replaceChildren(document.createTextNode(String(index+1).padStart(2,'0')));
+    section.querySelectorAll('[data-renumber] li .mark').forEach((mark,i)=>mark.textContent=String(i+1).padStart(2,'0'));
+    section.querySelectorAll('h2,h3,p:not(.eyebrow),.tag,.c-label,.status').forEach(el=>el.classList.add('editable'));
+    const eyebrow=section.querySelector('.eyebrow');
+    if(eyebrow && !eyebrow.querySelector('.section-label')) {
+      const label=document.createElement('span');label.className='section-label editable';
+      [...eyebrow.childNodes].filter(n=>n.nodeType===3).forEach(n=>{label.textContent+=n.textContent;n.remove();});eyebrow.append(label);
     }
-    window.addEventListener('scroll', onScroll, {passive:true});
-    window.addEventListener('resize', onScroll);
-    onScroll();
-  })();
-
-  /* ---------- reveal on scroll ---------- */
-  (function(){
-    var revs = [].slice.call(document.querySelectorAll('.reveal'));
-    if(!('IntersectionObserver' in window)){ revs.forEach(function(el){el.classList.add('is-visible');}); return; }
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('is-visible'); io.unobserve(en.target);} });
-    }, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
-    revs.forEach(function(el){
-      var i=0, s=el.previousElementSibling;
-      while(s){ if(s.classList&&s.classList.contains('reveal')) i++; s=s.previousElementSibling; }
-      el.style.transitionDelay = Math.min(i,6)*70 + 'ms';
-      io.observe(el);
-    });
-  })();
-
-  /* ---------- contact links rebuild from editable text ---------- */
-  function syncContacts(){
-    [].forEach.call(document.querySelectorAll('[data-contact] .contact-row'), function(row){
-      var type=row.getAttribute('data-type');
-      var valEl=row.querySelector('.c-val'); if(!valEl) return;
-      var val=(valEl.textContent||'').trim();
-      var href='#';
-      if(type==='email') href='mailto:'+val;
-      else if(type==='phone') href='tel:'+val.replace(/[^0-9+]/g,'');
-      else if(type==='github') href=/^https?:\/\//i.test(val) ? val : 'https://github.com/'+val.replace(/^@/,'');
-      row.setAttribute('href',href);
-    });
-  }
-  syncContacts();
-  // prevent navigation while editing; keep hrefs in sync as you type
-  [].forEach.call(document.querySelectorAll('[data-contact] .contact-row'), function(row){
-    row.addEventListener('click', function(e){ if(document.body.classList.contains('editing')) e.preventDefault(); });
-    var v=row.querySelector('.c-val');
-    if(v) v.addEventListener('input', syncContacts);
+    if(editing){
+      const bar=tools('section-tools');
+      bar.append(button('Move section up',()=>move(section,-1)),button('Move section down',()=>move(section,1)),button('+ Text',()=>addText(section)),button('+ Link',()=>addLink(section)),button('+ Entry',()=>addEntry(section)),button('Remove section',()=>remove(section),true));
+      section.prepend(bar);
+      [...section.children].filter(el=>el.matches('h2,p:not(.eyebrow)')).forEach(blockControls);
+      section.querySelectorAll('.clean>li,.cards>.card,.contact-grid>.contact-row,.entry-link').forEach(blockControls);
+    }
   });
-
-  /* ---------- editor ---------- */
-  var body = document.body;
-  var listCfg = { sports:{tpl:'tpl-sports'}, certs:{tpl:'tpl-certs'}, projects:{tpl:'tpl-projects'} };
-
-  function itemsOf(listEl){
-    return [].slice.call(listEl.children).filter(function(c){ return c.matches('li, .card'); });
+  [hero,footer,topbar,main].forEach(root=>root.querySelectorAll('.editable').forEach(el=>{
+    if(editing)el.setAttribute('contenteditable','true');else el.removeAttribute('contenteditable');
+    el.setAttribute('spellcheck','true');
+  }));
+  if(editing) [hero,footer,topbar].forEach(root=>{root.querySelectorAll('.editable').forEach(blockControls);const bar=tools('block-tools');bar.append(button('+ Text',()=>addText(root)));root.append(bar);});
+  navigation();
+}
+function navigation() {
+  const nav=$('navigation');nav.replaceChildren();
+  main.querySelectorAll('section').forEach(section=>{ const a=document.createElement('a');a.href='#'+section.id;a.textContent=section.querySelector('h2')?.textContent || section.querySelector('.section-label')?.textContent || 'Section'; nav.append(a); });
+  const first=main.querySelector('section');const arrow=hero.querySelector('.hero-arrow');if(arrow){if(first){arrow.href='#'+first.id;arrow.hidden=false;}else arrow.hidden=true;}
+}
+document.addEventListener('click',e=>{
+  if(e.target.closest('#editButton')){editing=true;document.body.classList.add('editing');refresh();notice('Edit your site, then choose Publish to GitHub when you’re ready.');}
+  if(editing && e.target.closest('a') && (main.contains(e.target)||hero.contains(e.target)))e.preventDefault();
+});
+document.addEventListener('focusin',e=>{if(editing&&e.target.matches('[contenteditable=true]'))checkpoint();});
+document.addEventListener('input',e=>{if(editing&&e.target.closest('[contenteditable]')){const row=e.target.closest('.contact-row'); if(row && row.dataset.type!=='custom'){const val=row.querySelector('.c-val').textContent.trim();const type=row.dataset.type;row.setAttribute('href',type==='email'?'mailto:'+val:type==='phone'?'tel:'+val.replace(/[^0-9+]/g,''):'https://github.com/'+val.replace(/^@/,''));}navigation();clearTimeout(timer);timer=setTimeout(save,400);}});
+document.addEventListener('paste',e=>{
+  if(!editing||!e.target.closest('[contenteditable]'))return;
+  e.preventDefault();document.execCommand('insertText',false,e.clipboardData.getData('text/plain'));
+});
+$('done').addEventListener('click',()=>{save();editing=false;document.body.classList.remove('editing');refresh();});
+$('undo').addEventListener('click',()=>{if(!history.length){notice('Nothing to undo yet.');return;}apply(history.pop());save();});
+$('restore').addEventListener('click',()=>{
+  try{const raw=localStorage.getItem(draftKey);if(!raw){notice('No saved draft in this browser.');return;}const state=JSON.parse(raw);if(!['main','hero','footer','topbar'].every(k=>typeof state[k]==='string'))throw new Error();checkpoint();apply(state);notice('Saved draft restored.');}catch{notice('Unable to restore this draft.');}
+});
+$('addSection').addEventListener('click',()=>{$('sectionTitle').value='';$('addDialog').showModal();});
+$('cancelDialog').addEventListener('click',()=>$('addDialog').close());
+$('addForm').addEventListener('submit',e=>{
+  e.preventDefault();let section;
+  mutate(()=>{
+    section=document.createElement('section');section.id='section-'+Date.now().toString(36);const eyebrow=document.createElement('p');eyebrow.className='eyebrow';eyebrow.innerHTML='<span class="num"></span><span class="section-label editable">A new chapter</span>';
+    const h=document.createElement('h2');h.className='editable';h.textContent=$('sectionTitle').value.trim()||'New section';section.append(eyebrow,h);
+    const kind=$('sectionType').value;
+    if(kind==='text')section.append(paragraph());
+    else {const list=document.createElement(kind==='list'?'ul':'div');list.className=kind==='cards'?'cards':kind==='contact'?'contact-grid':'clean';if(kind==='contact')list.dataset.contact='';else list.dataset.list='custom';list.append(entry(kind));section.append(list);}
+    main.append(section);
+  });$('addDialog').close();section.scrollIntoView({behavior:'smooth',block:'start'});
+});
+function exportHtml(revision) {
+  const copy=document.documentElement.cloneNode(true);
+  copy.querySelectorAll('[data-editor-ui]').forEach(el=>el.remove());
+  copy.querySelectorAll('[contenteditable]').forEach(el=>el.removeAttribute('contenteditable'));
+  copy.querySelector('body').classList.remove('editing');
+  copy.querySelectorAll('dialog').forEach(el=>el.removeAttribute('open'));
+  copy.querySelectorAll('dialog input').forEach(el=>{el.value='';el.removeAttribute('value');});
+  copy.querySelector('#toast').textContent='';copy.querySelector('#saveState').textContent='Editing your local copy';
+  copy.querySelector('#publishStatus').textContent='';copy.querySelector('#connectFields').hidden=false;
+  copy.querySelector('#disconnect').hidden=true;
+  ['confirmPublish','cancelPublish','publish','done'].forEach(id=>copy.querySelector('#'+id).disabled=false);
+  copy.querySelector('#confirmPublish').textContent='Publish changes';
+  copy.querySelectorAll('nav a.active').forEach(el=>el.classList.remove('active'));
+  copy.querySelector('meta[name="site-revision"]').content=revision;
+  return '<!DOCTYPE html>\n'+copy.outerHTML;
+}
+$('download').addEventListener('click',()=>{
+  save();const blob=new Blob([exportHtml(document.querySelector('meta[name="site-revision"]').content)],{type:'text/html;charset=utf-8'});
+  const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='index.html';a.click();setTimeout(()=>URL.revokeObjectURL(url),10000);notice('Downloaded a complete backup of your site.');
+});
+let githubToken='', publishing=false, pendingRevision=null, pendingBaseline=null, baseline=JSON.stringify(original);
+function remoteSnapshot(doc) { const state={}; for(const [key,id] of [['main','sections'],['hero','hero'],['footer','footer'],['topbar','topbar']]) {const root=doc.getElementById(id);if(!root)return null;state[key]=clean(root);} return JSON.stringify(state); }
+const githubFile='https://api.github.com/repos/wizard142/wizard142.github.io/contents/index.html';
+function base64Encode(text) {
+  const bytes=new TextEncoder().encode(text);let binary='';
+  for(let i=0;i<bytes.length;i+=8192)binary+=String.fromCharCode(...bytes.subarray(i,i+8192));
+  return btoa(binary);
+}
+function base64Decode(text) {return new TextDecoder().decode(Uint8Array.from(atob(text.replace(/\s/g,'')),c=>c.charCodeAt(0)));}
+async function githubRequest(url,options={}) {
+  const response=await fetch(url,{...options,headers:{Accept:'application/vnd.github+json',Authorization:'Bearer '+githubToken,'X-GitHub-Api-Version':'2022-11-28',...(options.method?{'Content-Type':'application/json'}:{})},cache:'no-store',credentials:'omit',referrerPolicy:'no-referrer',signal:AbortSignal.timeout(20000)});
+  if(!response.ok){
+    if(response.status===401){githubToken='';$('disconnect').hidden=true;throw new Error('GitHub rejected the token. Enter a valid, unexpired token.');}
+    if(response.status===403)throw new Error('GitHub denied this request. Check Contents: Read and write permission, repository access, and your GitHub API rate limit.');
+    if(response.status===404)throw new Error('GitHub could not access this repository. Select wizard142.github.io when creating your token.');
+    if(response.status===409||response.status===422)throw new Error('The repository changed, or GitHub rejected the update. Your draft is safe. Download a backup, reload the latest site, and reapply your changes.');
+    throw new Error('GitHub returned an error ('+response.status+'). Your draft is safe.');
   }
-  function renumber(listEl){
-    if(!listEl.hasAttribute('data-renumber')) return;
-    itemsOf(listEl).forEach(function(li,i){
-      var m=li.querySelector('.mark'); if(m) m.textContent = String(i+1).padStart(2,'0');
-    });
+  return response.json();
+}
+$('publish').addEventListener('click',()=>{
+  $('connectFields').hidden=!!githubToken;$('publishStatus').textContent=githubToken?'Connected for this tab. Publish your current changes?':'';
+  $('githubToken').value='';$('githubToken').required=!githubToken;$('publishDialog').showModal();
+});
+$('cancelPublish').addEventListener('click',()=>{$('githubToken').value='';$('publishDialog').close();});
+$('publishDialog').addEventListener('cancel',e=>{if(publishing)e.preventDefault();else $('githubToken').value='';});
+$('disconnect').addEventListener('click',()=>{githubToken='';$('githubToken').value='';$('disconnect').hidden=true;notice('Disconnected from GitHub. Your local draft is still saved.');});
+$('publishForm').addEventListener('submit',async e=>{
+  e.preventDefault();if(publishing)return;
+  if(!githubToken)githubToken=$('githubToken').value.trim();$('githubToken').value='';
+  if(!githubToken){$('publishStatus').textContent='Enter your GitHub token to publish.';return;}
+  publishing=true;save();['confirmPublish','cancelPublish','publish','done','disconnect'].forEach(id=>$(id).disabled=true);
+  $('confirmPublish').textContent='Publishing…';$('publishStatus').textContent='Checking the latest version on GitHub…';
+  try{
+    const remote=await githubRequest(githubFile+'?ref=main');
+    if(remote.encoding!=='base64'||typeof remote.content!=='string'||typeof remote.sha!=='string')throw new Error('GitHub returned an unsupported file response. Your draft is safe.');
+    const remoteDoc=new DOMParser().parseFromString(base64Decode(remote.content),'text/html');
+    const remoteRevision=remoteDoc.querySelector('meta[name="site-revision"]')?.content;
+    const localRevision=document.querySelector('meta[name="site-revision"]');
+    if(pendingRevision&&remoteRevision===pendingRevision){
+      localRevision.content=pendingRevision;baseline=pendingBaseline;pendingRevision=null;pendingBaseline=null;
+      $('publishStatus').textContent='Your previous publish succeeded. GitHub Pages is deploying it. Publish again if you made more changes.';
+    }else{
+      if(!remoteRevision||remoteRevision!==localRevision.content)throw new Error('A newer version exists on GitHub. Download your draft as a backup, reload the site after deployment, and reapply your changes to avoid overwriting newer work.');
+      if(remoteSnapshot(remoteDoc)!==baseline)throw new Error('The content changed on GitHub since this page loaded. Download your draft as a backup and reload the latest site before publishing.');
+      pendingRevision=crypto.randomUUID();const html=exportHtml(pendingRevision);pendingBaseline=remoteSnapshot(new DOMParser().parseFromString(html,'text/html'));
+      $('publishStatus').textContent='Saving your changes to GitHub…';
+      await githubRequest(githubFile,{method:'PUT',body:JSON.stringify({message:'Update personal site from browser editor',content:base64Encode(html),sha:remote.sha,branch:'main'})});
+      localRevision.content=pendingRevision;baseline=pendingBaseline;pendingRevision=null;pendingBaseline=null;
+      $('publishStatus').textContent='Published to GitHub. Your website will update when GitHub Pages finishes deploying, usually within a few minutes.';
+      notice('Published to GitHub. GitHub Pages is deploying your update.');
+    }
+    $('connectFields').hidden=true;$('githubToken').required=false;$('disconnect').hidden=false;
+  }catch(error){
+    $('publishStatus').textContent=error.name==='TimeoutError'||error.name==='TypeError'?'Connection interrupted. Your draft is saved. Retry to check whether GitHub received the update.':error.message;
+    $('connectFields').hidden=!!githubToken;$('githubToken').required=!githubToken;
+  }finally{
+    publishing=false;['confirmPublish','cancelPublish','publish','done','disconnect'].forEach(id=>$(id).disabled=false);$('confirmPublish').textContent='Publish changes';
   }
-  function addDelBtn(item){
-    if(item.querySelector('.item-del')) return;
-    var b=document.createElement('button');
-    b.className='item-del edit-ui'; b.type='button'; b.title='Delete'; b.innerHTML='&times;';
-    b.addEventListener('click', function(){
-      var list=item.closest('[data-list]'); item.remove(); if(list) renumber(list);
-    });
-    item.appendChild(b);
-  }
-  function setEditable(on){
-    [].forEach.call(document.querySelectorAll('.editable'), function(el){
-      if(on) el.setAttribute('contenteditable','true'); else el.removeAttribute('contenteditable');
-    });
-  }
-  function enterEdit(){
-    body.classList.add('editing');
-    [].forEach.call(document.querySelectorAll('[data-list]'), function(list){ itemsOf(list).forEach(addDelBtn); });
-    setEditable(true);
-    document.getElementById('editBar').setAttribute('aria-hidden','false');
-  }
-  function exitEdit(){
-    body.classList.remove('editing');
-    [].forEach.call(document.querySelectorAll('.item-del'), function(b){ b.remove(); });
-    setEditable(false);
-    syncContacts();
-    document.getElementById('editBar').setAttribute('aria-hidden','true');
-  }
+});
+window.addEventListener('beforeunload',()=>{if(editing)save();});
+window.addEventListener('scroll',()=>{
+  let active=main.querySelector('section'); main.querySelectorAll('section').forEach(s=>{if(s.getBoundingClientRect().top<150)active=s;});
+  document.querySelectorAll('#navigation a').forEach(a=>a.classList.toggle('active',active&&a.getAttribute('href')==='#'+active.id));
+},{passive:true});
+refresh();
+try{if(localStorage.getItem(draftKey))notice('You have a saved draft. Open the editor and choose Restore draft to continue.');}catch{}
+})();
 
-  [].forEach.call(document.querySelectorAll('[data-add]'), function(btn){
-    btn.addEventListener('click', function(){
-      var key=btn.getAttribute('data-add');
-      var list=document.querySelector('[data-list="'+key+'"]');
-      var tpl=document.getElementById(listCfg[key].tpl);
-      var node=tpl.content.firstElementChild.cloneNode(true);
-      list.appendChild(node);
-      addDelBtn(node);
-      node.querySelectorAll('.editable').forEach(function(el){ el.setAttribute('contenteditable','true'); });
-      renumber(list);
-      node.scrollIntoView({behavior:'smooth', block:'center'});
-    });
-  });
-
-  document.addEventListener('click', function(e){
-    if(!body.classList.contains('editing')) return;
-    var s=e.target.closest('.status'); if(!s) return;
-    if(s.classList.contains('done')){ s.classList.remove('done'); s.textContent='Planned'; }
-    else { s.classList.add('done'); s.textContent='Completed'; }
-  });
-
-  var modal=document.getElementById('lockModal');
-  var pwInput=document.getElementById('pwInput');
-  var pwErr=document.getElementById('pwErr');
-  function openModal(){ pwErr.hidden=true; pwInput.value=''; modal.hidden=false; setTimeout(function(){pwInput.focus();},50); }
-  function closeModal(){ modal.hidden=true; }
-  function tryUnlock(){
-    if(pwInput.value === EDIT_PASSWORD){ closeModal(); enterEdit(); }
-    else { pwErr.hidden=false; pwInput.select(); }
-  }
-  document.getElementById('lockBtn').addEventListener('click', function(){
-    if(body.classList.contains('editing')) exitEdit(); else openModal();
-  });
-  document.getElementById('pwOk').addEventListener('click', tryUnlock);
-  document.getElementById('pwCancel').addEventListener('click', closeModal);
-  pwInput.addEventListener('keydown', function(e){ if(e.key==='Enter') tryUnlock(); if(e.key==='Escape') closeModal(); });
-  modal.addEventListener('click', function(e){ if(e.target===modal) closeModal(); });
-  document.getElementById('btnExit').addEventListener('click', exitEdit);
-
-  document.getElementById('btnDownload').addEventListener('click', function(){
-    syncContacts();
-    var clone=document.documentElement.cloneNode(true);
-    clone.querySelectorAll('.item-del').forEach(function(e){ e.remove(); });
-    clone.querySelectorAll('[contenteditable]').forEach(function(e){ e.removeAttribute('contenteditable'); });
-    clone.querySelectorAll('.is-visible').forEach(function(e){ e.classList.remove('is-visible'); });
-    clone.querySelectorAll('nav a.active').forEach(function(e){ e.classList.remove('active'); });
-    clone.querySelectorAll('[style]').forEach(function(e){ if(e.id==='progress'||e.classList.contains('reveal')) e.removeAttribute('style'); });
-    var b=clone.querySelector('body'); if(b){ b.classList.remove('editing'); b.classList.remove('scrolled'); }
-    var m=clone.querySelector('#lockModal'); if(m) m.setAttribute('hidden','');
-    var pi=clone.querySelector('#pwInput'); if(pi) pi.removeAttribute('value');
-    var eb=clone.querySelector('#editBar'); if(eb) eb.setAttribute('aria-hidden','true');
-    var html='<!DOCTYPE html>\n<html lang="en">\n'+clone.innerHTML+'\n</html>';
-    var blob=new Blob([html], {type:'text/html'});
-    var url=URL.createObjectURL(blob);
-    var a=document.createElement('a'); a.href=url; a.download='index.html';
-    document.body.appendChild(a); a.click(); a.remove();
-    setTimeout(function(){ URL.revokeObjectURL(url); }, 500);
-  });
-  </script>
-
-
-
-</body>
-</html>
+</script></body></html>
