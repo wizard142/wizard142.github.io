@@ -26,3 +26,12 @@ Run from the repository directory and open the site in a browser. The page uses 
 ## Publishing safeguards
 
 The editor checks the page revision and original content against GitHub before writing, and uses GitHub’s file SHA to reject concurrent updates. If the remote page changed, keep a downloaded backup and reload the latest deployment before reapplying your changes. A failed publish leaves the local draft intact. Protected branches and missing write permission can prevent publishing; the dialog reports the error. A successful commit confirms the GitHub update, not completion of the Pages deployment.
+
+
+## YouTube journal
+
+The homepage’s **YouTube journey** section links to `/youtube/` (the public journey journal and workflow guide) and `/wizzy-rant-studio/` (the existing Studio overview and policies). The section automatically appears in the homepage navigation. The Studio overview links back to both the personal site and journal.
+
+To add a journal update, prepend an `article` in `youtube/index.html`, give it a unique ID and machine-readable `time`, add it to the notebook navigation, and update the dated checkpoint. Keep tested behavior separate from planned work. The public journal should never contain credentials, private runtime state, account tokens, or claims about earnings/performance without verified evidence. Its styling is in `youtube/style.css` and uses the personal site’s dark background, system fonts, and Georgia headings with muted YouTube-red accents. It needs no build step or JavaScript.
+
+The homepage editor edits the homepage only; journal updates are made in the journal file and committed normally.
