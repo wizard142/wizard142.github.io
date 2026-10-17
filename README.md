@@ -35,3 +35,7 @@ The homepage’s **YouTube journey** section links to `/youtube/` (the public jo
 To add a journal update, prepend an `article` in `youtube/index.html`, give it a unique ID and machine-readable `time`, add it to the notebook navigation, and update the dated checkpoint. Keep tested behavior separate from planned work. The public journal should never contain credentials, private runtime state, account tokens, or claims about earnings/performance without verified evidence. Its styling is in `youtube/style.css` and uses the personal site’s dark background, system fonts, and Georgia headings with muted YouTube-red accents. It needs no build step or JavaScript.
 
 The homepage editor edits the homepage only; journal updates are made in the journal file and committed normally.
+
+## Project and channel images
+
+All six existing project cards have local images under `assets/projects/`; public repository projects also have direct GitHub links. Channel artwork is in `assets/channels/` and appears in the homepage YouTube section and the journal. See `assets/README.md` for image provenance. The original homepage editor retains images in exported/published pages; adding or replacing images is a repository file update.
